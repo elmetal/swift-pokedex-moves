@@ -1,0 +1,81 @@
+import Foundation
+
+public extension PokemonMove {
+    /// The Pokemon move known as でんじほう in Japanese.
+    ///
+    /// The localized name of this move is `"Zap Cannon"` in English and
+    /// `"でんじほう"` in Japanese.
+    ///
+    /// The move's raw value is `"zap-cannon"`.
+    static let zapCannon = ZapCannonMove.move
+}
+
+enum ZapCannonMove {
+    static let move = PokemonMove(rawValue: "zap-cannon")
+    static let parameters1 = PokemonMove.Parameters(
+        type: .electric,
+        pp: 5,
+        power: .fixed(100),
+        hits: .one,
+        accuracy: .percent(50),
+        priority: 0,
+        category: .special,
+        target: .target
+    )
+
+    static let parameters2 = PokemonMove.Parameters(
+        type: .electric,
+        pp: 5,
+        power: .fixed(120),
+        hits: .one,
+        accuracy: .percent(50),
+        priority: 0,
+        category: .special,
+        target: .target
+    )
+
+    static let definition = PokemonMoveDefinition(
+        move: move,
+        introducedIn: .ii,
+        parameterHistory: [
+            .init(
+                versionGroups: [
+                    .goldSilver,
+                    .crystal,
+                    .rubySapphire,
+                    .emerald,
+                    .fireRedLeafGreen,
+                ],
+                parameters: parameters1
+            ),
+            .init(
+                versionGroups: [
+                    .diamondPearl,
+                    .platinum,
+                    .heartGoldSoulSilver,
+                    .blackWhite,
+                    .black2White2,
+                    .xY,
+                    .omegaRubyAlphaSapphire,
+                    .sunMoon,
+                    .ultraSunUltraMoon,
+                    .letsGoPikachuLetsGoEevee,
+                    .swordShield,
+                    .brilliantDiamondShiningPearl,
+                    .legendsArceus,
+                    .scarletViolet,
+                    .champions,
+                ],
+                parameters: parameters2
+            ),
+        ],
+        localizedNames: [
+            .english: "Zap Cannon",
+            .japanese: "でんじほう",
+        ]
+    )
+}
+
+public extension PokemonMoveDefinitions {
+    static let zapCannon = ZapCannonMove.definition
+}

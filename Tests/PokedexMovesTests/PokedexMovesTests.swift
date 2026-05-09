@@ -7,7 +7,7 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 167)
+    #expect(PokemonMoveDefinitions.all.count == 253)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
