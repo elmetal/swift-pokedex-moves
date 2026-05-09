@@ -26,7 +26,7 @@ enum Tackle {
         accuracy: 100,
         priority: 0,
         category: .physical,
-        target: .singleAdjacentPokemon
+        target: .target
     )
 
     static let definition = PokemonMoveDefinition(

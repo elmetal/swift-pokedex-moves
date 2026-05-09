@@ -18,7 +18,7 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.parameters.accuracy == 100)
     #expect(PokemonMoveDefinitions.tackle.parameters.priority == 0)
     #expect(PokemonMoveDefinitions.tackle.parameters.category == .physical)
-    #expect(PokemonMoveDefinitions.tackle.parameters.target == .singleAdjacentPokemon)
+    #expect(PokemonMoveDefinitions.tackle.parameters.target == .target)
     #expect(PokemonMoveDefinitions.definition(for: .tackle) == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.standardDefinition == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.introducedIn == .i)
@@ -28,8 +28,30 @@ import Testing
     #expect(PokemonMove.tackle.accuracy == 100)
     #expect(PokemonMove.tackle.priority == 0)
     #expect(PokemonMove.tackle.category == .physical)
-    #expect(PokemonMove.tackle.target == .singleAdjacentPokemon)
+    #expect(PokemonMove.tackle.target == .target)
     #expect(PokemonMove.tackle.parameters == PokemonMoveDefinitions.tackle.parameters)
+}
+
+@Test func includesMoveTargets() {
+    let targets: [PokemonMoveTarget] = [
+        .move,
+        .target,
+        .ally,
+        .usersSide,
+        .userOrAlly,
+        .opposingSide,
+        .user,
+        .opposingPokemon,
+        .randomOpposingPokemon,
+        .allOtherPokemon,
+        .allOpposingPokemon,
+        .battlefield,
+        .userAndAllies,
+        .allPokemon,
+        .allies,
+    ]
+
+    #expect(targets.count == 15)
 }
 
 @Test func namesTackleMoveDefinition() {
