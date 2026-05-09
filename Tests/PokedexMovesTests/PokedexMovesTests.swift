@@ -50,3 +50,15 @@ import Testing
     #expect(try english.parse("tackle") == .tackle)
     #expect(try japanese.parse("たいあたり") == .tackle)
 }
+
+@Test func formatsMoveCategories() {
+    let english = Locale(languageCode: .english)
+    let japanese = Locale(languageCode: .japanese)
+
+    #expect(PokemonMoveCategory.physical.formatted(locale: english) == "Physical")
+    #expect(PokemonMoveCategory.special.formatted(locale: english) == "Special")
+    #expect(PokemonMoveCategory.status.formatted(locale: english) == "Status")
+    #expect(PokemonMoveCategory.physical.formatted(locale: japanese) == "物理")
+    #expect(PokemonMoveCategory.special.formatted(locale: japanese) == "特殊")
+    #expect(PokemonMoveCategory.status.formatted(locale: japanese) == "変化")
+}
