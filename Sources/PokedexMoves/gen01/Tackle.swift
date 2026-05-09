@@ -21,12 +21,14 @@ public extension PokemonMove {
 enum Tackle: PokemonMoveDefinition {
     static let move = PokemonMove(rawValue: "tackle")
     static let introducedIn = PokemonGeneration.i
-    static let type = PokemonType.normal
-    static let pp = 35
-    static let power: Int? = 40
-    static let accuracy: Int? = 100
-    static let priority = 0
-    static let category = PokemonMoveCategory.physical
+    static let parameters = PokemonMove.Parameters(
+        type: .normal,
+        pp: 35,
+        power: 40,
+        accuracy: 100,
+        priority: 0,
+        category: .physical
+    )
 
     static func name(locale: Locale) -> String {
         switch locale.language.languageCode {
