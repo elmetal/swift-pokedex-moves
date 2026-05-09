@@ -4,8 +4,8 @@ public extension PokemonMove {
     struct Parameters: Hashable, Sendable {
         public let type: PokemonType
         public let pp: Int
-        public let power: Int?
-        public let accuracy: Int?
+        public let power: PokemonMove.Power
+        public let accuracy: PokemonMove.Accuracy
         public let priority: Int
         public let category: PokemonMove.Category
         public let target: PokemonMove.Target
@@ -13,8 +13,8 @@ public extension PokemonMove {
         public init(
             type: PokemonType,
             pp: Int,
-            power: Int?,
-            accuracy: Int?,
+            power: PokemonMove.Power,
+            accuracy: PokemonMove.Accuracy,
             priority: Int,
             category: PokemonMove.Category,
             target: PokemonMove.Target

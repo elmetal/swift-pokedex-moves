@@ -17,11 +17,11 @@ public extension PokemonMove {
         parameters.pp
     }
 
-    var power: Int? {
+    var power: PokemonMove.Power {
         parameters.power
     }
 
-    var accuracy: Int? {
+    var accuracy: PokemonMove.Accuracy {
         parameters.accuracy
     }
 

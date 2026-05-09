@@ -22,8 +22,8 @@ enum Tackle {
     static let parameters = PokemonMove.Parameters(
         type: .normal,
         pp: 35,
-        power: 40,
-        accuracy: 100,
+        power: .fixed(40),
+        accuracy: .percent(100),
         priority: 0,
         category: .physical,
         target: .target

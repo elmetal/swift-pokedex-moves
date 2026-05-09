@@ -14,8 +14,8 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
     #expect(PokemonMoveDefinitions.tackle.parameters.type == .normal)
     #expect(PokemonMoveDefinitions.tackle.parameters.pp == 35)
-    #expect(PokemonMoveDefinitions.tackle.parameters.power == 40)
-    #expect(PokemonMoveDefinitions.tackle.parameters.accuracy == 100)
+    #expect(PokemonMoveDefinitions.tackle.parameters.power == .fixed(40))
+    #expect(PokemonMoveDefinitions.tackle.parameters.accuracy == .percent(100))
     #expect(PokemonMoveDefinitions.tackle.parameters.priority == 0)
     #expect(PokemonMoveDefinitions.tackle.parameters.category == .physical)
     #expect(PokemonMoveDefinitions.tackle.parameters.target == .target)
@@ -24,12 +24,19 @@ import Testing
     #expect(PokemonMove.tackle.introducedIn == .i)
     #expect(PokemonMove.tackle.type == .normal)
     #expect(PokemonMove.tackle.pp == 35)
-    #expect(PokemonMove.tackle.power == 40)
-    #expect(PokemonMove.tackle.accuracy == 100)
+    #expect(PokemonMove.tackle.power == .fixed(40))
+    #expect(PokemonMove.tackle.accuracy == .percent(100))
     #expect(PokemonMove.tackle.priority == 0)
     #expect(PokemonMove.tackle.category == .physical)
     #expect(PokemonMove.tackle.target == .target)
     #expect(PokemonMove.tackle.parameters == PokemonMoveDefinitions.tackle.parameters)
+}
+
+@Test func modelsMovePowerAndAccuracy() {
+    #expect(PokemonMove.Power.fixed(40) == .fixed(40))
+    #expect(PokemonMove.Power.varies != .none)
+    #expect(PokemonMove.Accuracy.percent(100) == .percent(100))
+    #expect(PokemonMove.Accuracy.alwaysHits != .notApplicable)
 }
 
 @Test func includesMoveTargets() {
