@@ -121,6 +121,9 @@ public enum PokemonMoveDefinitions {
     /// The standard move definitions introduced in Generation I.
     public static let gen01: [PokemonMoveDefinition] = [
         tackle,
+        growl,
+        hypnosis,
+        swift,
     ]
 
     /// Returns the standard definition for the specified move.

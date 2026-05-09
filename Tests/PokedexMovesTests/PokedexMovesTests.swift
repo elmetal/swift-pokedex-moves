@@ -7,8 +7,8 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 1)
-    #expect(PokemonMoveDefinitions.gen01.count == 1)
+    #expect(PokemonMoveDefinitions.all.count == 4)
+    #expect(PokemonMoveDefinitions.gen01.count == 4)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -33,6 +33,26 @@ import Testing
     #expect(PokemonMove.tackle.parameters == PokemonMoveDefinitions.tackle.parameters)
 }
 
+@Test func includesGenerationIMoveDefinitions() {
+    #expect(PokemonMove.growl.pp == 40)
+    #expect(PokemonMove.growl.power == .none)
+    #expect(PokemonMove.growl.accuracy == .percent(100))
+    #expect(PokemonMove.growl.category == .status)
+    #expect(PokemonMove.growl.target == .allOpposingPokemon)
+
+    #expect(PokemonMove.swift.pp == 20)
+    #expect(PokemonMove.swift.power == .fixed(60))
+    #expect(PokemonMove.swift.accuracy == .alwaysHits)
+    #expect(PokemonMove.swift.category == .special)
+    #expect(PokemonMove.swift.target == .allOpposingPokemon)
+
+    #expect(PokemonMove.hypnosis.pp == 20)
+    #expect(PokemonMove.hypnosis.power == .none)
+    #expect(PokemonMove.hypnosis.accuracy == .percent(60))
+    #expect(PokemonMove.hypnosis.category == .status)
+    #expect(PokemonMove.hypnosis.target == .target)
+}
+
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
     #expect(PokemonMove.tackle.parameters(in: .redBlue) == PokemonMove.tackle.parameters)
     #expect(PokemonMove.tackle.parameters(in: .scarletViolet) == PokemonMove.tackle.parameters)
@@ -46,41 +66,13 @@ import Testing
 }
 
 @Test func reportsAmbiguousGenerationParameters() {
-    let diamondPearl = PokemonMove.Parameters(
-        type: .psychic,
-        pp: 20,
-        power: .none,
-        accuracy: .percent(70),
-        priority: 0,
-        category: .status,
-        target: .target
-    )
-    let platinum = PokemonMove.Parameters(
-        type: .psychic,
-        pp: 20,
-        power: .none,
-        accuracy: .percent(60),
-        priority: 0,
-        category: .status,
-        target: .target
-    )
-    let definition = PokemonMoveDefinition(
-        move: PokemonMove(rawValue: "hypnosis"),
-        introducedIn: .i,
-        parameterHistory: [
-            .init(versionGroups: [.diamondPearl], parameters: diamondPearl),
-            .init(versionGroups: [.platinum], parameters: platinum),
-        ],
-        localizedNames: [.english: "Hypnosis"]
-    )
-
-    #expect(definition.parameters(in: .diamondPearl) == diamondPearl)
-    #expect(definition.parameters(in: .platinum) == platinum)
+    #expect(PokemonMove.hypnosis.parameters(in: .diamondPearl)?.accuracy == .percent(70))
+    #expect(PokemonMove.hypnosis.parameters(in: .platinum)?.accuracy == .percent(60))
     #expect(throws: PokemonMoveParameterLookupError.ambiguousParameters(
         .iv,
-        versionGroups: [.diamondPearl, .platinum]
+        versionGroups: [.diamondPearl, .platinum, .heartGoldSoulSilver]
     )) {
-        try definition.parameters(in: .iv)
+        try PokemonMove.hypnosis.parameters(in: .iv)
     }
 }
 
@@ -116,11 +108,18 @@ import Testing
 @Test func namesTackleMoveDefinition() {
     #expect(PokemonMoveDefinitions.tackle.name(locale: Locale(languageCode: .english)) == "Tackle")
     #expect(PokemonMoveDefinitions.tackle.name(locale: Locale(languageCode: .japanese)) == "たいあたり")
+    #expect(PokemonMoveDefinitions.growl.name(locale: Locale(languageCode: .english)) == "Growl")
+    #expect(PokemonMoveDefinitions.growl.name(locale: Locale(languageCode: .japanese)) == "なきごえ")
+    #expect(PokemonMoveDefinitions.hypnosis.name(locale: Locale(languageCode: .english)) == "Hypnosis")
+    #expect(PokemonMoveDefinitions.hypnosis.name(locale: Locale(languageCode: .japanese)) == "さいみんじゅつ")
+    #expect(PokemonMoveDefinitions.swift.name(locale: Locale(languageCode: .english)) == "Swift")
+    #expect(PokemonMoveDefinitions.swift.name(locale: Locale(languageCode: .japanese)) == "スピードスター")
 }
 
 @Test func formatsTackleMoveName() {
     #expect(PokemonMove.tackle.formatted(locale: Locale(languageCode: .english)) == "Tackle")
     #expect(PokemonMove.tackle.formatted(locale: Locale(languageCode: .japanese)) == "たいあたり")
+    #expect(PokemonMove.swift.formatted(locale: Locale(languageCode: .japanese)) == "スピードスター")
 }
 
 @Test func parsesTackleMoveName() throws {
@@ -129,7 +128,12 @@ import Testing
 
     #expect(try english.parse("Tackle") == .tackle)
     #expect(try english.parse("tackle") == .tackle)
+    #expect(try english.parse("Swift") == .swift)
+    #expect(try english.parse("hypnosis") == .hypnosis)
     #expect(try japanese.parse("たいあたり") == .tackle)
+    #expect(try japanese.parse("なきごえ") == .growl)
+    #expect(try japanese.parse("さいみんじゅつ") == .hypnosis)
+    #expect(try japanese.parse("スピードスター") == .swift)
 }
 
 @Test func formatsMoveCategories() {
