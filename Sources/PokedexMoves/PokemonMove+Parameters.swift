@@ -12,6 +12,9 @@ public extension PokemonMove {
         /// The move's base power.
         public let power: PokemonMove.Power
 
+        /// The move's hit count.
+        public let hits: PokemonMove.Hits
+
         /// The move's accuracy.
         public let accuracy: PokemonMove.Accuracy
 
@@ -29,6 +32,7 @@ public extension PokemonMove {
             type: PokemonType,
             pp: Int,
             power: PokemonMove.Power,
+            hits: PokemonMove.Hits = .one,
             accuracy: PokemonMove.Accuracy,
             priority: Int,
             category: PokemonMove.Category,
@@ -37,6 +41,7 @@ public extension PokemonMove {
             self.type = type
             self.pp = pp
             self.power = power
+            self.hits = hits
             self.accuracy = accuracy
             self.priority = priority
             self.category = category

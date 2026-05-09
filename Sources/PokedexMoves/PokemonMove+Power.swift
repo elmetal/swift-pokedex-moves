@@ -4,6 +4,9 @@ public extension PokemonMove {
         /// A fixed numeric base power.
         case fixed(Int)
 
+        /// A base power sequence for consecutive hits.
+        case perHit([Int])
+
         /// A base power that varies according to battle conditions.
         case varies
 

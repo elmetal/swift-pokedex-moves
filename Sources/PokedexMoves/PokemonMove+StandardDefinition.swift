@@ -29,6 +29,11 @@ public extension PokemonMove {
         parameters.power
     }
 
+    /// The move's hit count.
+    var hits: PokemonMove.Hits {
+        parameters.hits
+    }
+
     /// The move's accuracy.
     var accuracy: PokemonMove.Accuracy {
         parameters.accuracy

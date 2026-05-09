@@ -15,6 +15,7 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.parameters.type == .normal)
     #expect(PokemonMoveDefinitions.tackle.parameters.pp == 35)
     #expect(PokemonMoveDefinitions.tackle.parameters.power == .fixed(40))
+    #expect(PokemonMoveDefinitions.tackle.parameters.hits == .one)
     #expect(PokemonMoveDefinitions.tackle.parameters.accuracy == .percent(100))
     #expect(PokemonMoveDefinitions.tackle.parameters.priority == 0)
     #expect(PokemonMoveDefinitions.tackle.parameters.category == .physical)
@@ -26,6 +27,7 @@ import Testing
     #expect(PokemonMove.tackle.type == .normal)
     #expect(PokemonMove.tackle.pp == 35)
     #expect(PokemonMove.tackle.power == .fixed(40))
+    #expect(PokemonMove.tackle.hits == .one)
     #expect(PokemonMove.tackle.accuracy == .percent(100))
     #expect(PokemonMove.tackle.priority == 0)
     #expect(PokemonMove.tackle.category == .physical)
@@ -36,18 +38,21 @@ import Testing
 @Test func includesGenerationIMoveDefinitions() {
     #expect(PokemonMove.growl.pp == 40)
     #expect(PokemonMove.growl.power == .none)
+    #expect(PokemonMove.growl.hits == .one)
     #expect(PokemonMove.growl.accuracy == .percent(100))
     #expect(PokemonMove.growl.category == .status)
     #expect(PokemonMove.growl.target == .allOpposingPokemon)
 
     #expect(PokemonMove.swift.pp == 20)
     #expect(PokemonMove.swift.power == .fixed(60))
+    #expect(PokemonMove.swift.hits == .one)
     #expect(PokemonMove.swift.accuracy == .alwaysHits)
     #expect(PokemonMove.swift.category == .special)
     #expect(PokemonMove.swift.target == .allOpposingPokemon)
 
     #expect(PokemonMove.hypnosis.pp == 20)
     #expect(PokemonMove.hypnosis.power == .none)
+    #expect(PokemonMove.hypnosis.hits == .one)
     #expect(PokemonMove.hypnosis.accuracy == .percent(60))
     #expect(PokemonMove.hypnosis.category == .status)
     #expect(PokemonMove.hypnosis.target == .target)
@@ -78,9 +83,17 @@ import Testing
 
 @Test func modelsMovePowerAndAccuracy() {
     #expect(PokemonMove.Power.fixed(40) == .fixed(40))
+    #expect(PokemonMove.Power.perHit([20, 40, 60]) == .perHit([20, 40, 60]))
     #expect(PokemonMove.Power.varies != .none)
     #expect(PokemonMove.Accuracy.percent(100) == .percent(100))
     #expect(PokemonMove.Accuracy.alwaysHits != .notApplicable)
+}
+
+@Test func modelsMoveHits() {
+    #expect(PokemonMove.Hits.one == .one)
+    #expect(PokemonMove.Hits.fixed(2) == .fixed(2))
+    #expect(PokemonMove.Hits.range(2...5) == .range(2...5))
+    #expect(PokemonMove.Hits.varies != .one)
 }
 
 @Test func includesMoveTargets() {
