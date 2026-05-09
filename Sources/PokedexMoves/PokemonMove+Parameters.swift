@@ -29,7 +29,4 @@ public extension PokemonMove {
         }
     }
 
-    var parameters: Parameters? {
-        PokemonMoveDefinitions.definition(for: self)?.parameters
-    }
 }

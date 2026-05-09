@@ -1,15 +1,30 @@
 import Foundation
 
-protocol PokemonMoveDefinition: Sendable {
-    static var move: PokemonMove { get }
-    static var introducedIn: PokemonGeneration { get }
-    static var parameters: PokemonMove.Parameters { get }
+public struct PokemonMoveDefinition: Hashable, Sendable {
+    public let move: PokemonMove
+    public let introducedIn: PokemonGeneration
+    public let parameters: PokemonMove.Parameters
+    public let localizedNames: [Locale.LanguageCode: String]
 
-    static func name(locale: Locale) -> String
-}
+    public init(
+        move: PokemonMove,
+        introducedIn: PokemonGeneration,
+        parameters: PokemonMove.Parameters,
+        localizedNames: [Locale.LanguageCode: String]
+    ) {
+        self.move = move
+        self.introducedIn = introducedIn
+        self.parameters = parameters
+        self.localizedNames = localizedNames
+    }
 
-extension PokemonMoveDefinition {
-    static func matchesName(_ value: String, locale: Locale) -> Bool {
+    public func name(locale: Locale) -> String {
+        localizedNames[locale.language.languageCode ?? .english]
+            ?? localizedNames[.english]
+            ?? move.rawValue
+    }
+
+    func matchesName(_ value: String, locale: Locale) -> Bool {
         let input = value.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return name(locale: locale).localizedStandardCompare(input) == .orderedSame
@@ -17,14 +32,15 @@ extension PokemonMoveDefinition {
     }
 }
 
-enum PokemonMoveDefinitions {
-    static let all = gen01
+public enum PokemonMoveDefinitions {
+    public static let all = gen01
 
-    static let gen01: [any PokemonMoveDefinition.Type] = [
-        Tackle.self,
+    public static let gen01: [PokemonMoveDefinition] = [
+        tackle,
     ]
 
-    static func definition(for move: PokemonMove) -> (any PokemonMoveDefinition.Type)? {
+    public static func definition(for move: PokemonMove) -> PokemonMoveDefinition? {
         all.first { $0.move == move }
     }
 }
+

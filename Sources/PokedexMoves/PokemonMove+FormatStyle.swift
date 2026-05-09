@@ -29,4 +29,3 @@ public extension PokemonMove {
         style.format(self)
     }
 }
-
