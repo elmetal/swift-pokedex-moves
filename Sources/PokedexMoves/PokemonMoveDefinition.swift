@@ -116,14 +116,25 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
 /// A namespace for standard move definitions.
 public enum PokemonMoveDefinitions {
     /// All standard move definitions.
-    public static let all = gen01
+    public static let all = gen01 + gen03 + gen08
 
     /// The standard move definitions introduced in Generation I.
     public static let gen01: [PokemonMoveDefinition] = [
         tackle,
         growl,
+        doubleKick,
         hypnosis,
         swift,
+    ]
+
+    /// The standard move definitions introduced in Generation III.
+    public static let gen03: [PokemonMoveDefinition] = [
+        bulletSeed,
+    ]
+
+    /// The standard move definitions introduced in Generation VIII.
+    public static let gen08: [PokemonMoveDefinition] = [
+        tripleAxel,
     ]
 
     /// Returns the standard definition for the specified move.

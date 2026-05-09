@@ -7,8 +7,8 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 4)
-    #expect(PokemonMoveDefinitions.gen01.count == 4)
+    #expect(PokemonMoveDefinitions.all.count == 7)
+    #expect(PokemonMoveDefinitions.gen01.count == 5)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -33,6 +33,31 @@ import Testing
     #expect(PokemonMove.tackle.category == .physical)
     #expect(PokemonMove.tackle.target == .target)
     #expect(PokemonMove.tackle.parameters == PokemonMoveDefinitions.tackle.parameters)
+}
+
+@Test func includesMultiHitMoveDefinitions() {
+    #expect(PokemonMove.doubleKick.type == .fighting)
+    #expect(PokemonMove.doubleKick.pp == 30)
+    #expect(PokemonMove.doubleKick.power == .fixed(30))
+    #expect(PokemonMove.doubleKick.hits == .fixed(2))
+    #expect(PokemonMove.doubleKick.accuracy == .percent(100))
+    #expect(PokemonMove.doubleKick.category == .physical)
+
+    #expect(PokemonMove.bulletSeed.type == .grass)
+    #expect(PokemonMove.bulletSeed.pp == 30)
+    #expect(PokemonMove.bulletSeed.power == .fixed(25))
+    #expect(PokemonMove.bulletSeed.hits == .range(2...5))
+    #expect(PokemonMove.bulletSeed.accuracy == .percent(100))
+    #expect(PokemonMove.bulletSeed.category == .physical)
+    #expect(PokemonMove.bulletSeed.parameters(in: .rubySapphire)?.power == .fixed(10))
+    #expect(PokemonMove.bulletSeed.parameters(in: .blackWhite)?.power == .fixed(25))
+
+    #expect(PokemonMove.tripleAxel.type == .ice)
+    #expect(PokemonMove.tripleAxel.pp == 10)
+    #expect(PokemonMove.tripleAxel.power == .perHit([20, 40, 60]))
+    #expect(PokemonMove.tripleAxel.hits == .fixed(3))
+    #expect(PokemonMove.tripleAxel.accuracy == .percent(90))
+    #expect(PokemonMove.tripleAxel.category == .physical)
 }
 
 @Test func includesGenerationIMoveDefinitions() {
@@ -123,10 +148,16 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.name(locale: Locale(languageCode: .japanese)) == "たいあたり")
     #expect(PokemonMoveDefinitions.growl.name(locale: Locale(languageCode: .english)) == "Growl")
     #expect(PokemonMoveDefinitions.growl.name(locale: Locale(languageCode: .japanese)) == "なきごえ")
+    #expect(PokemonMoveDefinitions.doubleKick.name(locale: Locale(languageCode: .english)) == "Double Kick")
+    #expect(PokemonMoveDefinitions.doubleKick.name(locale: Locale(languageCode: .japanese)) == "にどげり")
     #expect(PokemonMoveDefinitions.hypnosis.name(locale: Locale(languageCode: .english)) == "Hypnosis")
     #expect(PokemonMoveDefinitions.hypnosis.name(locale: Locale(languageCode: .japanese)) == "さいみんじゅつ")
     #expect(PokemonMoveDefinitions.swift.name(locale: Locale(languageCode: .english)) == "Swift")
     #expect(PokemonMoveDefinitions.swift.name(locale: Locale(languageCode: .japanese)) == "スピードスター")
+    #expect(PokemonMoveDefinitions.bulletSeed.name(locale: Locale(languageCode: .english)) == "Bullet Seed")
+    #expect(PokemonMoveDefinitions.bulletSeed.name(locale: Locale(languageCode: .japanese)) == "タネマシンガン")
+    #expect(PokemonMoveDefinitions.tripleAxel.name(locale: Locale(languageCode: .english)) == "Triple Axel")
+    #expect(PokemonMoveDefinitions.tripleAxel.name(locale: Locale(languageCode: .japanese)) == "トリプルアクセル")
 }
 
 @Test func formatsTackleMoveName() {
@@ -143,10 +174,16 @@ import Testing
     #expect(try english.parse("tackle") == .tackle)
     #expect(try english.parse("Swift") == .swift)
     #expect(try english.parse("hypnosis") == .hypnosis)
+    #expect(try english.parse("Double Kick") == .doubleKick)
+    #expect(try english.parse("bullet-seed") == .bulletSeed)
+    #expect(try english.parse("Triple Axel") == .tripleAxel)
     #expect(try japanese.parse("たいあたり") == .tackle)
     #expect(try japanese.parse("なきごえ") == .growl)
+    #expect(try japanese.parse("にどげり") == .doubleKick)
     #expect(try japanese.parse("さいみんじゅつ") == .hypnosis)
     #expect(try japanese.parse("スピードスター") == .swift)
+    #expect(try japanese.parse("タネマシンガン") == .bulletSeed)
+    #expect(try japanese.parse("トリプルアクセル") == .tripleAxel)
 }
 
 @Test func formatsMoveCategories() {
