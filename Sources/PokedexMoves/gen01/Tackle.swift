@@ -32,7 +32,12 @@ enum Tackle {
     static let definition = PokemonMoveDefinition(
         move: move,
         introducedIn: .i,
-        parameters: parameters,
+        parameterHistory: [
+            .init(
+                versionGroups: Set(PokemonVersionGroup.allCases),
+                parameters: parameters
+            ),
+        ],
         localizedNames: [
             .english: "Tackle",
             .japanese: "たいあたり",

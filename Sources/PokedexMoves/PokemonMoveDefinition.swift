@@ -3,7 +3,7 @@ import Foundation
 /// A definition for a Pokemon move.
 ///
 /// A move definition contains the move identifier, localized names,
-/// introductory generation, and battle parameters.
+/// introductory generation, and parameter history.
 public struct PokemonMoveDefinition: Hashable, Sendable {
     /// The move this definition describes.
     public let move: PokemonMove
@@ -11,8 +11,17 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
     /// The generation in which the move was introduced.
     public let introducedIn: PokemonGeneration
 
-    /// The move's battle parameters.
-    public let parameters: PokemonMove.Parameters
+    /// The move's parameter history.
+    public let parameterHistory: [PokemonMove.ParameterSet]
+
+    /// The latest battle parameters for the move.
+    public var parameters: PokemonMove.Parameters {
+        guard let parameters = parameterHistory.last?.parameters else {
+            preconditionFailure("PokemonMoveDefinition requires at least one parameter set.")
+        }
+
+        return parameters
+    }
 
     /// The localized names for the move.
     public let localizedNames: [Locale.LanguageCode: String]
@@ -21,13 +30,33 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
     public init(
         move: PokemonMove,
         introducedIn: PokemonGeneration,
-        parameters: PokemonMove.Parameters,
+        parameterHistory: [PokemonMove.ParameterSet],
         localizedNames: [Locale.LanguageCode: String]
     ) {
         self.move = move
         self.introducedIn = introducedIn
-        self.parameters = parameters
+        self.parameterHistory = parameterHistory
         self.localizedNames = localizedNames
+    }
+
+    /// Creates a definition with a single parameter set.
+    public init(
+        move: PokemonMove,
+        introducedIn: PokemonGeneration,
+        parameters: PokemonMove.Parameters,
+        localizedNames: [Locale.LanguageCode: String]
+    ) {
+        self.init(
+            move: move,
+            introducedIn: introducedIn,
+            parameterHistory: [
+                .init(
+                    versionGroups: Set(PokemonVersionGroup.allCases),
+                    parameters: parameters
+                ),
+            ],
+            localizedNames: localizedNames
+        )
     }
 
     /// Returns the move's name in the specified locale.
@@ -39,6 +68,41 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
         localizedNames[locale.language.languageCode ?? .english]
             ?? localizedNames[.english]
             ?? move.rawValue
+    }
+
+    /// Returns the move's parameters in the specified version group.
+    public func parameters(in versionGroup: PokemonVersionGroup) -> PokemonMove.Parameters? {
+        parameterHistory.last { $0.versionGroups.contains(versionGroup) }?.parameters
+    }
+
+    /// Returns the move's parameters in the specified generation.
+    ///
+    /// This method throws an error when the generation contains multiple
+    /// matching parameter values.
+    public func parameters(in generation: PokemonGeneration) throws -> PokemonMove.Parameters {
+        let versionGroups = Set(PokemonVersionGroup.all(in: generation))
+        let matches = parameterHistory.filter {
+            !$0.versionGroups.isDisjoint(with: versionGroups)
+        }
+
+        guard !matches.isEmpty else {
+            throw PokemonMoveParameterLookupError.unavailableGeneration(generation)
+        }
+
+        let uniqueParameters = Set(matches.map(\.parameters))
+
+        guard uniqueParameters.count == 1, let parameters = uniqueParameters.first else {
+            let matchingVersionGroups = matches.reduce(into: Set<PokemonVersionGroup>()) {
+                $0.formUnion($1.versionGroups.intersection(versionGroups))
+            }
+
+            throw PokemonMoveParameterLookupError.ambiguousParameters(
+                generation,
+                versionGroups: matchingVersionGroups
+            )
+        }
+
+        return parameters
     }
 
     func matchesName(_ value: String, locale: Locale) -> Bool {

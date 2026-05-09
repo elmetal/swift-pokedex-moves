@@ -19,6 +19,7 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.parameters.priority == 0)
     #expect(PokemonMoveDefinitions.tackle.parameters.category == .physical)
     #expect(PokemonMoveDefinitions.tackle.parameters.target == .target)
+    #expect(PokemonMoveDefinitions.tackle.parameterHistory.count == 1)
     #expect(PokemonMoveDefinitions.definition(for: .tackle) == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.standardDefinition == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.introducedIn == .i)
@@ -30,6 +31,52 @@ import Testing
     #expect(PokemonMove.tackle.category == .physical)
     #expect(PokemonMove.tackle.target == .target)
     #expect(PokemonMove.tackle.parameters == PokemonMoveDefinitions.tackle.parameters)
+}
+
+@Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
+    #expect(PokemonMove.tackle.parameters(in: .redBlue) == PokemonMove.tackle.parameters)
+    #expect(PokemonMove.tackle.parameters(in: .scarletViolet) == PokemonMove.tackle.parameters)
+    #expect(try PokemonMove.tackle.parameters(in: .i) == PokemonMove.tackle.parameters)
+    #expect(try PokemonMove.tackle.parameters(in: .ix) == PokemonMove.tackle.parameters)
+}
+
+@Test func reportsAmbiguousGenerationParameters() {
+    let diamondPearl = PokemonMove.Parameters(
+        type: .psychic,
+        pp: 20,
+        power: .none,
+        accuracy: .percent(70),
+        priority: 0,
+        category: .status,
+        target: .target
+    )
+    let platinum = PokemonMove.Parameters(
+        type: .psychic,
+        pp: 20,
+        power: .none,
+        accuracy: .percent(60),
+        priority: 0,
+        category: .status,
+        target: .target
+    )
+    let definition = PokemonMoveDefinition(
+        move: PokemonMove(rawValue: "hypnosis"),
+        introducedIn: .i,
+        parameterHistory: [
+            .init(versionGroups: [.diamondPearl], parameters: diamondPearl),
+            .init(versionGroups: [.platinum], parameters: platinum),
+        ],
+        localizedNames: [.english: "Hypnosis"]
+    )
+
+    #expect(definition.parameters(in: .diamondPearl) == diamondPearl)
+    #expect(definition.parameters(in: .platinum) == platinum)
+    #expect(throws: PokemonMoveParameterLookupError.ambiguousParameters(
+        .iv,
+        versionGroups: [.diamondPearl, .platinum]
+    )) {
+        try definition.parameters(in: .iv)
+    }
 }
 
 @Test func modelsMovePowerAndAccuracy() {
