@@ -7,7 +7,7 @@ public extension PokemonMove {
         public let power: Int?
         public let accuracy: Int?
         public let priority: Int
-        public let category: PokemonMoveCategory
+        public let category: PokemonMove.Category
         public let target: PokemonMove.Target
 
         public init(
@@ -16,7 +16,7 @@ public extension PokemonMove {
             power: Int?,
             accuracy: Int?,
             priority: Int,
-            category: PokemonMoveCategory,
+            category: PokemonMove.Category,
             target: PokemonMove.Target
         ) {
             self.type = type

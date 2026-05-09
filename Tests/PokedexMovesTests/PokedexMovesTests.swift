@@ -77,10 +77,10 @@ import Testing
     let english = Locale(languageCode: .english)
     let japanese = Locale(languageCode: .japanese)
 
-    #expect(PokemonMoveCategory.physical.formatted(locale: english) == "Physical")
-    #expect(PokemonMoveCategory.special.formatted(locale: english) == "Special")
-    #expect(PokemonMoveCategory.status.formatted(locale: english) == "Status")
-    #expect(PokemonMoveCategory.physical.formatted(locale: japanese) == "物理")
-    #expect(PokemonMoveCategory.special.formatted(locale: japanese) == "特殊")
-    #expect(PokemonMoveCategory.status.formatted(locale: japanese) == "変化")
+    #expect(PokemonMove.Category.physical.formatted(locale: english) == "Physical")
+    #expect(PokemonMove.Category.special.formatted(locale: english) == "Special")
+    #expect(PokemonMove.Category.status.formatted(locale: english) == "Status")
+    #expect(PokemonMove.Category.physical.formatted(locale: japanese) == "物理")
+    #expect(PokemonMove.Category.special.formatted(locale: japanese) == "特殊")
+    #expect(PokemonMove.Category.status.formatted(locale: japanese) == "変化")
 }

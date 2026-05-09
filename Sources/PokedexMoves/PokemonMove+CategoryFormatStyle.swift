@@ -1,8 +1,8 @@
 import Foundation
 
-public extension PokemonMoveCategory {
+public extension PokemonMove.Category {
     struct FormatStyle: Foundation.FormatStyle, Sendable {
-        public typealias FormatInput = PokemonMoveCategory
+        public typealias FormatInput = PokemonMove.Category
         public typealias FormatOutput = String
 
         public var locale: Locale
@@ -11,7 +11,7 @@ public extension PokemonMoveCategory {
             self.locale = locale
         }
 
-        public func format(_ value: PokemonMoveCategory) -> String {
+        public func format(_ value: PokemonMove.Category) -> String {
             switch (value, locale.language.languageCode) {
             case (.physical, .japanese):
                 "物理"

@@ -29,7 +29,7 @@ public extension PokemonMove {
         parameters.priority
     }
 
-    var category: PokemonMoveCategory {
+    var category: PokemonMove.Category {
         parameters.category
     }
 
