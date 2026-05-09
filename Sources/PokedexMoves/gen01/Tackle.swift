@@ -20,6 +20,7 @@ public extension PokemonMove {
 
 enum Tackle: PokemonMoveDefinition {
     static let move = PokemonMove(rawValue: "tackle")
+    static let introducedIn = PokemonGeneration.i
     static let type = PokemonType.normal
     static let pp = 35
     static let power: Int? = 40

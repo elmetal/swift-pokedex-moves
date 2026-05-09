@@ -3,6 +3,7 @@ import PokemonTypes
 
 protocol PokemonMoveDefinition: Sendable {
     static var move: PokemonMove { get }
+    static var introducedIn: PokemonGeneration { get }
     static var type: PokemonType { get }
     static var pp: Int { get }
     static var power: Int? { get }
