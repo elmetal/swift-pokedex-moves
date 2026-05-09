@@ -33,7 +33,7 @@ public extension PokemonMove {
         parameters.category
     }
 
-    var target: PokemonMoveTarget {
+    var target: PokemonMove.Target {
         parameters.target
     }
 
@@ -49,4 +49,3 @@ public extension PokemonMove {
         return definition
     }
 }
-

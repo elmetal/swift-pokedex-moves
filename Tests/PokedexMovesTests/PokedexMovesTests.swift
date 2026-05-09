@@ -33,7 +33,7 @@ import Testing
 }
 
 @Test func includesMoveTargets() {
-    let targets: [PokemonMoveTarget] = [
+    let targets: [PokemonMove.Target] = [
         .move,
         .target,
         .ally,
