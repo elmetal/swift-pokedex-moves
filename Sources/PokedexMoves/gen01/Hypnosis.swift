@@ -7,25 +7,28 @@ public extension PokemonMove {
     /// `"さいみんじゅつ"` in Japanese.
     ///
     /// The move's raw value is `"hypnosis"`.
-    static let hypnosis = Hypnosis.move
+    static let hypnosis = HypnosisMove.move
 }
 
-enum Hypnosis {
+enum HypnosisMove {
     static let move = PokemonMove(rawValue: "hypnosis")
-    static let accuracy60 = PokemonMove.Parameters(
+    static let parameters1 = PokemonMove.Parameters(
         type: .psychic,
         pp: 20,
         power: .none,
-        accuracy: .percent(60),
+        hits: .one,
+        accuracy: .percent(70),
         priority: 0,
         category: .status,
         target: .target
     )
-    static let accuracy70 = PokemonMove.Parameters(
+
+    static let parameters2 = PokemonMove.Parameters(
         type: .psychic,
         pp: 20,
         power: .none,
-        accuracy: .percent(70),
+        hits: .one,
+        accuracy: .percent(60),
         priority: 0,
         category: .status,
         target: .target
@@ -44,12 +47,9 @@ enum Hypnosis {
                     .rubySapphire,
                     .emerald,
                     .fireRedLeafGreen,
+                    .diamondPearl,
                 ],
-                parameters: accuracy60
-            ),
-            .init(
-                versionGroups: [.diamondPearl],
-                parameters: accuracy70
+                parameters: parameters1
             ),
             .init(
                 versionGroups: [
@@ -68,7 +68,7 @@ enum Hypnosis {
                     .scarletViolet,
                     .champions,
                 ],
-                parameters: accuracy60
+                parameters: parameters2
             ),
         ],
         localizedNames: [
@@ -79,6 +79,5 @@ enum Hypnosis {
 }
 
 public extension PokemonMoveDefinitions {
-    static let hypnosis = Hypnosis.definition
+    static let hypnosis = HypnosisMove.definition
 }
-

@@ -7,15 +7,16 @@ public extension PokemonMove {
     /// `"なきごえ"` in Japanese.
     ///
     /// The move's raw value is `"growl"`.
-    static let growl = Growl.move
+    static let growl = GrowlMove.move
 }
 
-enum Growl {
+enum GrowlMove {
     static let move = PokemonMove(rawValue: "growl")
     static let parameters = PokemonMove.Parameters(
         type: .normal,
         pp: 40,
         power: .none,
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
         category: .status,
@@ -39,6 +40,5 @@ enum Growl {
 }
 
 public extension PokemonMoveDefinitions {
-    static let growl = Growl.definition
+    static let growl = GrowlMove.definition
 }
-

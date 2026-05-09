@@ -7,10 +7,10 @@ public extension PokemonMove {
     /// `"にどげり"` in Japanese.
     ///
     /// The move's raw value is `"double-kick"`.
-    static let doubleKick = DoubleKick.move
+    static let doubleKick = DoubleKickMove.move
 }
 
-enum DoubleKick {
+enum DoubleKickMove {
     static let move = PokemonMove(rawValue: "double-kick")
     static let parameters = PokemonMove.Parameters(
         type: .fighting,
@@ -40,6 +40,5 @@ enum DoubleKick {
 }
 
 public extension PokemonMoveDefinitions {
-    static let doubleKick = DoubleKick.definition
+    static let doubleKick = DoubleKickMove.definition
 }
-

@@ -7,9 +7,9 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 7)
-    #expect(PokemonMoveDefinitions.gen01.count == 5)
-    #expect(PokemonMoveDefinitions.gen01.first?.move == .tackle)
+    #expect(PokemonMoveDefinitions.all.count == 167)
+    #expect(PokemonMoveDefinitions.gen01.count == 165)
+    #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
     #expect(PokemonMoveDefinitions.tackle.parameters.type == .normal)
@@ -20,7 +20,7 @@ import Testing
     #expect(PokemonMoveDefinitions.tackle.parameters.priority == 0)
     #expect(PokemonMoveDefinitions.tackle.parameters.category == .physical)
     #expect(PokemonMoveDefinitions.tackle.parameters.target == .target)
-    #expect(PokemonMoveDefinitions.tackle.parameterHistory.count == 1)
+    #expect(PokemonMoveDefinitions.tackle.parameterHistory.count == 2)
     #expect(PokemonMoveDefinitions.definition(for: .tackle) == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.standardDefinition == PokemonMoveDefinitions.tackle)
     #expect(PokemonMove.tackle.introducedIn == .i)
@@ -73,6 +73,7 @@ import Testing
     #expect(PokemonMove.swift.hits == .one)
     #expect(PokemonMove.swift.accuracy == .alwaysHits)
     #expect(PokemonMove.swift.category == .special)
+    #expect(PokemonMove.swift.parameters(in: .redBlue)?.category == .physical)
     #expect(PokemonMove.swift.target == .allOpposingPokemon)
 
     #expect(PokemonMove.hypnosis.pp == 20)
@@ -84,10 +85,10 @@ import Testing
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
-    #expect(PokemonMove.tackle.parameters(in: .redBlue) == PokemonMove.tackle.parameters)
+    #expect(PokemonMove.tackle.parameters(in: .redBlue)?.power == .fixed(50))
     #expect(PokemonMove.tackle.parameters(in: .scarletViolet) == PokemonMove.tackle.parameters)
     #expect(PokemonMove.tackle.parameters(in: PokemonVersionGroup.champions) == PokemonMove.tackle.parameters)
-    #expect(try PokemonMove.tackle.parameters(in: .i) == PokemonMove.tackle.parameters)
+    #expect(try PokemonMove.tackle.parameters(in: .i).power == .fixed(50))
     #expect(try PokemonMove.tackle.parameters(in: .ix) == PokemonMove.tackle.parameters)
     #expect(try PokemonMove.tackle.parameters(in: .champions) == PokemonMove.tackle.parameters)
     #expect(PokemonGeneration.latest == .champions)

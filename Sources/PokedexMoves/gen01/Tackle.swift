@@ -6,23 +6,28 @@ public extension PokemonMove {
     /// The localized name of this move is `"Tackle"` in English and
     /// `"たいあたり"` in Japanese.
     ///
-    /// Use this value when you need to refer to Tackle by its canonical move
-    /// identifier.
-    ///
-    /// ```swift
-    /// let move = PokemonMove.tackle
-    /// ```
-    ///
     /// The move's raw value is `"tackle"`.
-    static let tackle = Tackle.move
+    static let tackle = TackleMove.move
 }
 
-enum Tackle {
+enum TackleMove {
     static let move = PokemonMove(rawValue: "tackle")
-    static let parameters = PokemonMove.Parameters(
+    static let parameters1 = PokemonMove.Parameters(
+        type: .normal,
+        pp: 35,
+        power: .fixed(50),
+        hits: .one,
+        accuracy: .percent(100),
+        priority: 0,
+        category: .physical,
+        target: .target
+    )
+
+    static let parameters2 = PokemonMove.Parameters(
         type: .normal,
         pp: 35,
         power: .fixed(40),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
         category: .physical,
@@ -34,8 +39,36 @@ enum Tackle {
         introducedIn: .i,
         parameterHistory: [
             .init(
-                versionGroups: Set(PokemonVersionGroup.allCases),
-                parameters: parameters
+                versionGroups: [
+                    .redBlue,
+                    .yellow,
+                    .goldSilver,
+                    .crystal,
+                    .rubySapphire,
+                    .emerald,
+                    .fireRedLeafGreen,
+                    .diamondPearl,
+                    .platinum,
+                    .heartGoldSoulSilver,
+                    .blackWhite,
+                    .black2White2,
+                    .xY,
+                    .omegaRubyAlphaSapphire,
+                ],
+                parameters: parameters1
+            ),
+            .init(
+                versionGroups: [
+                    .sunMoon,
+                    .ultraSunUltraMoon,
+                    .letsGoPikachuLetsGoEevee,
+                    .swordShield,
+                    .brilliantDiamondShiningPearl,
+                    .legendsArceus,
+                    .scarletViolet,
+                    .champions,
+                ],
+                parameters: parameters2
             ),
         ],
         localizedNames: [
@@ -46,5 +79,5 @@ enum Tackle {
 }
 
 public extension PokemonMoveDefinitions {
-    static let tackle = Tackle.definition
+    static let tackle = TackleMove.definition
 }
