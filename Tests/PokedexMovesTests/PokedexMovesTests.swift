@@ -10,7 +10,17 @@ import Testing
     #expect(PokemonMoveDefinitions.all.count == 1)
     #expect(PokemonMoveDefinitions.gen01.count == 1)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .tackle)
+    #expect(Tackle.type == .normal)
+    #expect(Tackle.pp == 35)
+    #expect(Tackle.power == 40)
+    #expect(Tackle.accuracy == 100)
+    #expect(Tackle.priority == 0)
     #expect(Tackle.category == .physical)
+    #expect(PokemonMove.tackle.type == .normal)
+    #expect(PokemonMove.tackle.pp == 35)
+    #expect(PokemonMove.tackle.power == 40)
+    #expect(PokemonMove.tackle.accuracy == 100)
+    #expect(PokemonMove.tackle.priority == 0)
     #expect(PokemonMove.tackle.category == .physical)
 }
 

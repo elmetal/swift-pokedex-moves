@@ -1,4 +1,5 @@
 import Foundation
+import PokemonTypes
 
 public extension PokemonMove {
     /// The Pokemon move known as たいあたり in Japanese.
@@ -19,6 +20,11 @@ public extension PokemonMove {
 
 enum Tackle: PokemonMoveDefinition {
     static let move = PokemonMove(rawValue: "tackle")
+    static let type = PokemonType.normal
+    static let pp = 35
+    static let power: Int? = 40
+    static let accuracy: Int? = 100
+    static let priority = 0
     static let category = PokemonMoveCategory.physical
 
     static func name(locale: Locale) -> String {

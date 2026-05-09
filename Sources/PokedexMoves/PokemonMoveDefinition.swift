@@ -1,7 +1,13 @@
 import Foundation
+import PokemonTypes
 
 protocol PokemonMoveDefinition: Sendable {
     static var move: PokemonMove { get }
+    static var type: PokemonType { get }
+    static var pp: Int { get }
+    static var power: Int? { get }
+    static var accuracy: Int? { get }
+    static var priority: Int { get }
     static var category: PokemonMoveCategory { get }
 
     static func name(locale: Locale) -> String
