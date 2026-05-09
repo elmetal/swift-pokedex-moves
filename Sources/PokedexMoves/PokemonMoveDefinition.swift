@@ -22,5 +22,8 @@ enum PokemonMoveDefinitions {
     static let gen01: [any PokemonMoveDefinition.Type] = [
         Tackle.self,
     ]
-}
 
+    static func definition(for move: PokemonMove) -> (any PokemonMoveDefinition.Type)? {
+        all.first { $0.move == move }
+    }
+}
