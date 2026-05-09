@@ -21,6 +21,7 @@ public enum PokemonVersionGroup: String, Hashable, Codable, Sendable, CaseIterab
     case brilliantDiamondShiningPearl
     case legendsArceus
     case scarletViolet
+    case champions
 
     /// The generation that contains the version group.
     public var generation: PokemonGeneration {
@@ -43,15 +44,16 @@ public enum PokemonVersionGroup: String, Hashable, Codable, Sendable, CaseIterab
             .viii
         case .scarletViolet:
             .ix
+        case .champions:
+            .champions
         }
     }
 
     /// The latest version group represented by this package.
-    public static var latest: Self { .scarletViolet }
+    public static var latest: Self { .champions }
 
     /// Returns all version groups in the specified generation.
     public static func all(in generation: PokemonGeneration) -> [Self] {
         allCases.filter { $0.generation == generation }
     }
 }
-

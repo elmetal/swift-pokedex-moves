@@ -36,8 +36,13 @@ import Testing
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
     #expect(PokemonMove.tackle.parameters(in: .redBlue) == PokemonMove.tackle.parameters)
     #expect(PokemonMove.tackle.parameters(in: .scarletViolet) == PokemonMove.tackle.parameters)
+    #expect(PokemonMove.tackle.parameters(in: PokemonVersionGroup.champions) == PokemonMove.tackle.parameters)
     #expect(try PokemonMove.tackle.parameters(in: .i) == PokemonMove.tackle.parameters)
     #expect(try PokemonMove.tackle.parameters(in: .ix) == PokemonMove.tackle.parameters)
+    #expect(try PokemonMove.tackle.parameters(in: .champions) == PokemonMove.tackle.parameters)
+    #expect(PokemonGeneration.latest == .champions)
+    #expect(PokemonVersionGroup.latest == .champions)
+    #expect(PokemonVersionGroup.champions.generation == .champions)
 }
 
 @Test func reportsAmbiguousGenerationParameters() {

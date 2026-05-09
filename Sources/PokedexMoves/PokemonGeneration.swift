@@ -9,7 +9,8 @@ public enum PokemonGeneration: Int, Hashable, Codable, Sendable {
     case vii = 7
     case viii = 8
     case ix = 9
+    case champions = -1
 
     /// The latest generation represented by this package.
-    public static var latest: Self { .ix }
+    public static var latest: Self { .champions }
 }
