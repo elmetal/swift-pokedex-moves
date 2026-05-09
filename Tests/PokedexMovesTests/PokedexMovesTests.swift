@@ -17,6 +17,7 @@ import Testing
     #expect(Tackle.parameters.accuracy == 100)
     #expect(Tackle.parameters.priority == 0)
     #expect(Tackle.parameters.category == .physical)
+    #expect(Tackle.parameters.target == .singleAdjacentPokemon)
     #expect(PokemonMove.tackle.introducedIn == .i)
     #expect(PokemonMove.tackle.parameters?.type == .normal)
     #expect(PokemonMove.tackle.parameters?.pp == 35)
@@ -24,6 +25,7 @@ import Testing
     #expect(PokemonMove.tackle.parameters?.accuracy == 100)
     #expect(PokemonMove.tackle.parameters?.priority == 0)
     #expect(PokemonMove.tackle.category == .physical)
+    #expect(PokemonMove.tackle.parameters?.target == .singleAdjacentPokemon)
 }
 
 @Test func namesTackleMoveDefinition() {

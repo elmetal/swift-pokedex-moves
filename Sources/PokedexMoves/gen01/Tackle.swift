@@ -27,7 +27,8 @@ enum Tackle: PokemonMoveDefinition {
         power: 40,
         accuracy: 100,
         priority: 0,
-        category: .physical
+        category: .physical,
+        target: .singleAdjacentPokemon
     )
 
     static func name(locale: Locale) -> String {
