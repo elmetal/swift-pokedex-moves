@@ -1,45 +1,34 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as ブレイズキック in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Blaze Kick"` in English and
+    /// `"ブレイズキック"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"blaze-kick"`.
+    static let blazeKick = BlazeKickMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum BlazeKickMove {
+    static let move = PokemonMove(rawValue: "blaze-kick")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .fire,
+        pp: 10,
+        power: .fixed(85),
+        hits: .one,
+        accuracy: .percent(90),
         priority: 0,
         category: .special,
         target: .target
     )
 
     static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
-        priority: 0,
-        category: .physical,
-        target: .target
-    )
-
-    static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(25),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .fire,
+        pp: 10,
+        power: .fixed(85),
+        hits: .one,
+        accuracy: .percent(90),
         priority: 0,
         category: .physical,
         target: .target
@@ -62,11 +51,6 @@ enum BulletSeedMove {
                     .diamondPearl,
                     .platinum,
                     .heartGoldSoulSilver,
-                ],
-                parameters: parameters2
-            ),
-            .init(
-                versionGroups: [
                     .blackWhite,
                     .black2White2,
                     .xY,
@@ -80,16 +64,16 @@ enum BulletSeedMove {
                     .scarletViolet,
                     .champions,
                 ],
-                parameters: parameters3
+                parameters: parameters2
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Blaze Kick",
+            .japanese: "ブレイズキック",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let blazeKick = BlazeKickMove.definition
 }

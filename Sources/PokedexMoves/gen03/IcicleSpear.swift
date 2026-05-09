@@ -1,19 +1,19 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as つららばり in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Icicle Spear"` in English and
+    /// `"つららばり"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"icicle-spear"`.
+    static let icicleSpear = IcicleSpearMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum IcicleSpearMove {
+    static let move = PokemonMove(rawValue: "icicle-spear")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
+        type: .ice,
         pp: 30,
         power: .fixed(10),
         hits: .range(2...5),
@@ -24,7 +24,7 @@ enum BulletSeedMove {
     )
 
     static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
+        type: .ice,
         pp: 30,
         power: .fixed(10),
         hits: .range(2...5),
@@ -35,7 +35,7 @@ enum BulletSeedMove {
     )
 
     static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
+        type: .ice,
         pp: 30,
         power: .fixed(25),
         hits: .range(2...5),
@@ -84,12 +84,12 @@ enum BulletSeedMove {
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Icicle Spear",
+            .japanese: "つららばり",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let icicleSpear = IcicleSpearMove.definition
 }

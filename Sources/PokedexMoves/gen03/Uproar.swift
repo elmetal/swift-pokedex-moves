@@ -1,48 +1,48 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as さわぐ in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Uproar"` in English and
+    /// `"さわぐ"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"uproar"`.
+    static let uproar = UproarMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum UproarMove {
+    static let move = PokemonMove(rawValue: "uproar")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
+        type: .normal,
+        pp: 10,
+        power: .fixed(50),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
-        category: .special,
-        target: .target
+        category: .physical,
+        target: .randomOpposingPokemon
     )
 
     static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
+        type: .normal,
+        pp: 10,
+        power: .fixed(50),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
-        category: .physical,
-        target: .target
+        category: .special,
+        target: .randomOpposingPokemon
     )
 
     static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(25),
-        hits: .range(2...5),
+        type: .normal,
+        pp: 10,
+        power: .fixed(90),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
-        category: .physical,
-        target: .target
+        category: .special,
+        target: .randomOpposingPokemon
     )
 
     static let definition = PokemonMoveDefinition(
@@ -84,12 +84,12 @@ enum BulletSeedMove {
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Uproar",
+            .japanese: "さわぐ",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let uproar = UproarMove.definition
 }

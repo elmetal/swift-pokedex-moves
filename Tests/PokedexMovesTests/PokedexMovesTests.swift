@@ -7,8 +7,10 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 253)
+    #expect(PokemonMoveDefinitions.all.count == 355)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
+    #expect(PokemonMoveDefinitions.gen02.count == 86)
+    #expect(PokemonMoveDefinitions.gen03.count == 103)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -82,6 +84,24 @@ import Testing
     #expect(PokemonMove.hypnosis.accuracy == .percent(60))
     #expect(PokemonMove.hypnosis.category == .status)
     #expect(PokemonMove.hypnosis.target == .target)
+}
+
+@Test func includesGenerationIIIMoveDefinitions() {
+    #expect(PokemonMove.aerialAce.pp == 20)
+    #expect(PokemonMove.aerialAce.power == .fixed(60))
+    #expect(PokemonMove.aerialAce.hits == .one)
+    #expect(PokemonMove.aerialAce.accuracy == .alwaysHits)
+    #expect(PokemonMove.aerialAce.priority == 0)
+    #expect(PokemonMove.aerialAce.category == .physical)
+    #expect(PokemonMove.aerialAce.target == .target)
+
+    #expect(PokemonMove.fakeOut.pp == 10)
+    #expect(PokemonMove.fakeOut.power == .fixed(40))
+    #expect(PokemonMove.fakeOut.hits == .one)
+    #expect(PokemonMove.fakeOut.accuracy == .percent(100))
+    #expect(PokemonMove.fakeOut.priority == 3)
+    #expect(PokemonMove.fakeOut.category == .physical)
+    #expect(PokemonMove.fakeOut.target == .target)
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {

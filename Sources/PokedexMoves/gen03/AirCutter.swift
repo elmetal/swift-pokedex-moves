@@ -1,48 +1,48 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as エアカッター in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Air Cutter"` in English and
+    /// `"エアカッター"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"air-cutter"`.
+    static let airCutter = AirCutterMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum AirCutterMove {
+    static let move = PokemonMove(rawValue: "air-cutter")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .flying,
+        pp: 25,
+        power: .fixed(55),
+        hits: .one,
+        accuracy: .percent(95),
         priority: 0,
-        category: .special,
-        target: .target
+        category: .physical,
+        target: .allOpposingPokemon
     )
 
     static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .flying,
+        pp: 25,
+        power: .fixed(55),
+        hits: .one,
+        accuracy: .percent(95),
         priority: 0,
-        category: .physical,
-        target: .target
+        category: .special,
+        target: .allOpposingPokemon
     )
 
     static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(25),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .flying,
+        pp: 25,
+        power: .fixed(60),
+        hits: .one,
+        accuracy: .percent(95),
         priority: 0,
-        category: .physical,
-        target: .target
+        category: .special,
+        target: .allOpposingPokemon
     )
 
     static let definition = PokemonMoveDefinition(
@@ -62,13 +62,13 @@ enum BulletSeedMove {
                     .diamondPearl,
                     .platinum,
                     .heartGoldSoulSilver,
+                    .blackWhite,
+                    .black2White2,
                 ],
                 parameters: parameters2
             ),
             .init(
                 versionGroups: [
-                    .blackWhite,
-                    .black2White2,
                     .xY,
                     .omegaRubyAlphaSapphire,
                     .sunMoon,
@@ -84,12 +84,12 @@ enum BulletSeedMove {
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Air Cutter",
+            .japanese: "エアカッター",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let airCutter = AirCutterMove.definition
 }

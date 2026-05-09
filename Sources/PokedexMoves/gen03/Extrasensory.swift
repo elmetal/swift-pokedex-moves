@@ -1,22 +1,22 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as じんつうりき in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Extrasensory"` in English and
+    /// `"じんつうりき"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"extrasensory"`.
+    static let extrasensory = ExtrasensoryMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum ExtrasensoryMove {
+    static let move = PokemonMove(rawValue: "extrasensory")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
+        type: .psychic,
         pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
+        power: .fixed(80),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
         category: .special,
@@ -24,24 +24,13 @@ enum BulletSeedMove {
     )
 
     static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
+        type: .psychic,
+        pp: 20,
+        power: .fixed(80),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
-        category: .physical,
-        target: .target
-    )
-
-    static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(25),
-        hits: .range(2...5),
-        accuracy: .percent(100),
-        priority: 0,
-        category: .physical,
+        category: .special,
         target: .target
     )
 
@@ -54,21 +43,16 @@ enum BulletSeedMove {
                     .rubySapphire,
                     .emerald,
                     .fireRedLeafGreen,
+                    .diamondPearl,
+                    .platinum,
+                    .heartGoldSoulSilver,
+                    .blackWhite,
+                    .black2White2,
                 ],
                 parameters: parameters1
             ),
             .init(
                 versionGroups: [
-                    .diamondPearl,
-                    .platinum,
-                    .heartGoldSoulSilver,
-                ],
-                parameters: parameters2
-            ),
-            .init(
-                versionGroups: [
-                    .blackWhite,
-                    .black2White2,
                     .xY,
                     .omegaRubyAlphaSapphire,
                     .sunMoon,
@@ -80,16 +64,16 @@ enum BulletSeedMove {
                     .scarletViolet,
                     .champions,
                 ],
-                parameters: parameters3
+                parameters: parameters2
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Extrasensory",
+            .japanese: "じんつうりき",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let extrasensory = ExtrasensoryMove.definition
 }

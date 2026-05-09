@@ -1,47 +1,47 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as タネマシンガン in Japanese.
+    /// The Pokemon move known as はめつのねがい in Japanese.
     ///
-    /// The localized name of this move is `"Bullet Seed"` in English and
-    /// `"タネマシンガン"` in Japanese.
+    /// The localized name of this move is `"Doom Desire"` in English and
+    /// `"はめつのねがい"` in Japanese.
     ///
-    /// The move's raw value is `"bullet-seed"`.
-    static let bulletSeed = BulletSeedMove.move
+    /// The move's raw value is `"doom-desire"`.
+    static let doomDesire = DoomDesireMove.move
 }
 
-enum BulletSeedMove {
-    static let move = PokemonMove(rawValue: "bullet-seed")
+enum DoomDesireMove {
+    static let move = PokemonMove(rawValue: "doom-desire")
     static let parameters1 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
+        type: .steel,
+        pp: 5,
+        power: .fixed(120),
+        hits: .one,
+        accuracy: .percent(85),
+        priority: 0,
+        category: .physical,
+        target: .target
+    )
+
+    static let parameters2 = PokemonMove.Parameters(
+        type: .steel,
+        pp: 5,
+        power: .fixed(120),
+        hits: .one,
+        accuracy: .percent(85),
         priority: 0,
         category: .special,
         target: .target
     )
 
-    static let parameters2 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(10),
-        hits: .range(2...5),
-        accuracy: .percent(100),
-        priority: 0,
-        category: .physical,
-        target: .target
-    )
-
     static let parameters3 = PokemonMove.Parameters(
-        type: .grass,
-        pp: 30,
-        power: .fixed(25),
-        hits: .range(2...5),
+        type: .steel,
+        pp: 5,
+        power: .fixed(140),
+        hits: .one,
         accuracy: .percent(100),
         priority: 0,
-        category: .physical,
+        category: .special,
         target: .target
     )
 
@@ -84,12 +84,12 @@ enum BulletSeedMove {
             ),
         ],
         localizedNames: [
-            .english: "Bullet Seed",
-            .japanese: "タネマシンガン",
+            .english: "Doom Desire",
+            .japanese: "はめつのねがい",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let bulletSeed = BulletSeedMove.definition
+    static let doomDesire = DoomDesireMove.definition
 }
