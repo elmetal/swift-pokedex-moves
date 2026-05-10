@@ -7,12 +7,13 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 560)
+    #expect(PokemonMoveDefinitions.all.count == 622)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
     #expect(PokemonMoveDefinitions.gen04.count == 113)
     #expect(PokemonMoveDefinitions.gen05.count == 92)
+    #expect(PokemonMoveDefinitions.gen06.count == 62)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -139,6 +140,23 @@ import Testing
     #expect(PokemonMove.gearGrind.hits == .fixed(2))
     #expect(PokemonMove.gearGrind.accuracy == .percent(85))
     #expect(PokemonMove.gearGrind.category == .physical)
+}
+
+@Test func includesGenerationVIMoveDefinitions() {
+    #expect(PokemonMove.disarmingVoice.type == .fairy)
+    #expect(PokemonMove.disarmingVoice.power == .fixed(40))
+    #expect(PokemonMove.disarmingVoice.accuracy == .alwaysHits)
+    #expect(PokemonMove.disarmingVoice.target == .allOpposingPokemon)
+    #expect(PokemonMove.disarmingVoice.category == .special)
+
+    #expect(PokemonMove.flyingPress.power == .fixed(100))
+    #expect(PokemonMove.flyingPress.parameters(in: .xY)?.power == .fixed(80))
+    #expect(PokemonMove.flyingPress.parameters(in: .sunMoon)?.power == .fixed(100))
+
+    #expect(PokemonMove.waterShuriken.hits == .range(2...5))
+    #expect(PokemonMove.waterShuriken.priority == 1)
+    #expect(PokemonMove.waterShuriken.category == .special)
+    #expect(PokemonMove.waterShuriken.parameters(in: .xY)?.category == .physical)
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {

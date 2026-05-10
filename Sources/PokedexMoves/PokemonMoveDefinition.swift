@@ -116,7 +116,7 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
 /// A namespace for standard move definitions.
 public enum PokemonMoveDefinitions {
     /// All standard move definitions.
-    public static let all = gen01 + gen02 + gen03 + gen04 + gen05 + gen08
+    public static let all = gen01 + gen02 + gen03 + gen04 + gen05 + gen06 + gen08
 
     /// The standard move definitions introduced in Generation I.
     public static let gen01: [PokemonMoveDefinition] = [
@@ -697,6 +697,73 @@ public enum PokemonMoveDefinitions {
         vCreate,
         fusionFlare,
         fusionBolt,
+    ]
+
+
+    /// The standard move definitions introduced in Generation VI.
+    public static let gen06: [PokemonMoveDefinition] = [
+        flyingPress,
+        matBlock,
+        belch,
+        rototiller,
+        stickyWeb,
+        fellStinger,
+        phantomForce,
+        trickOrTreat,
+        nobleRoar,
+        ionDeluge,
+        parabolicCharge,
+        forestsCurse,
+        petalBlizzard,
+        freezeDry,
+        disarmingVoice,
+        partingShot,
+        topsyTurvy,
+        drainingKiss,
+        craftyShield,
+        flowerShield,
+        grassyTerrain,
+        mistyTerrain,
+        electrify,
+        playRough,
+        fairyWind,
+        moonblast,
+        boomburst,
+        fairyLock,
+        kingsShield,
+        playNice,
+        confide,
+        diamondStorm,
+        steamEruption,
+        hyperspaceHole,
+        waterShuriken,
+        mysticalFire,
+        spikyShield,
+        aromaticMist,
+        eerieImpulse,
+        venomDrench,
+        powder,
+        geomancy,
+        magneticFlux,
+        happyHour,
+        electricTerrain,
+        dazzlingGleam,
+        celebrate,
+        holdHands,
+        babyDollEyes,
+        nuzzle,
+        holdBack,
+        infestation,
+        powerUpPunch,
+        oblivionWing,
+        thousandArrows,
+        thousandWaves,
+        landsWrath,
+        lightOfRuin,
+        originPulse,
+        precipiceBlades,
+        dragonAscent,
+        hyperspaceFury,
     ]
 
     /// The standard move definitions introduced in Generation VIII.
