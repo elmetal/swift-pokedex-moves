@@ -7,11 +7,12 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 468)
+    #expect(PokemonMoveDefinitions.all.count == 560)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
     #expect(PokemonMoveDefinitions.gen04.count == 113)
+    #expect(PokemonMoveDefinitions.gen05.count == 92)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -121,6 +122,23 @@ import Testing
     #expect(PokemonMove.doubleHit.power == .fixed(35))
     #expect(PokemonMove.doubleHit.hits == .fixed(2))
     #expect(PokemonMove.doubleHit.category == .physical)
+}
+
+@Test func includesGenerationVMoveDefinitions() {
+    #expect(PokemonMove.heavySlam.pp == 10)
+    #expect(PokemonMove.heavySlam.power == .varies)
+    #expect(PokemonMove.heavySlam.hits == .one)
+    #expect(PokemonMove.heavySlam.accuracy == .percent(100))
+    #expect(PokemonMove.heavySlam.category == .physical)
+
+    #expect(PokemonMove.clearSmog.power == .fixed(50))
+    #expect(PokemonMove.clearSmog.accuracy == .alwaysHits)
+    #expect(PokemonMove.clearSmog.category == .special)
+
+    #expect(PokemonMove.gearGrind.power == .fixed(50))
+    #expect(PokemonMove.gearGrind.hits == .fixed(2))
+    #expect(PokemonMove.gearGrind.accuracy == .percent(85))
+    #expect(PokemonMove.gearGrind.category == .physical)
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
