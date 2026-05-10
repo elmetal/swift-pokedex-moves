@@ -7,13 +7,14 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 622)
+    #expect(PokemonMoveDefinitions.all.count == 743)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
     #expect(PokemonMoveDefinitions.gen04.count == 113)
     #expect(PokemonMoveDefinitions.gen05.count == 92)
     #expect(PokemonMoveDefinitions.gen06.count == 62)
+    #expect(PokemonMoveDefinitions.gen07.count == 121)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -157,6 +158,24 @@ import Testing
     #expect(PokemonMove.waterShuriken.priority == 1)
     #expect(PokemonMove.waterShuriken.category == .special)
     #expect(PokemonMove.waterShuriken.parameters(in: .xY)?.category == .physical)
+}
+
+@Test func includesGenerationVIIMoveDefinitions() {
+    #expect(PokemonMove.breakneckBlitzPhysical.power == .varies)
+    #expect(PokemonMove.breakneckBlitzPhysical.accuracy == .alwaysHits)
+    #expect(PokemonMove.breakneckBlitzPhysical.category == .physical)
+
+    #expect(PokemonMove.tenMillionVoltThunderbolt.power == .fixed(195))
+    #expect(PokemonMove.tenMillionVoltThunderbolt.accuracy == .alwaysHits)
+    #expect(PokemonMove.tenMillionVoltThunderbolt.category == .special)
+
+    #expect(PokemonMove.zippyZap.power == .fixed(80))
+    #expect(PokemonMove.zippyZap.pp == 10)
+    #expect(PokemonMove.zippyZap.parameters(in: .letsGoPikachuLetsGoEevee)?.power == .fixed(50))
+    #expect(PokemonMove.zippyZap.parameters(in: .letsGoPikachuLetsGoEevee)?.pp == 15)
+
+    #expect(PokemonMove.doubleIronBash.power == .fixed(60))
+    #expect(PokemonMove.doubleIronBash.hits == .fixed(2))
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
