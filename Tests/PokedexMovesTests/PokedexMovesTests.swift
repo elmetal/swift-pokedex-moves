@@ -7,10 +7,11 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 355)
+    #expect(PokemonMoveDefinitions.all.count == 468)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
+    #expect(PokemonMoveDefinitions.gen04.count == 113)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -102,6 +103,24 @@ import Testing
     #expect(PokemonMove.fakeOut.priority == 3)
     #expect(PokemonMove.fakeOut.category == .physical)
     #expect(PokemonMove.fakeOut.target == .target)
+}
+
+@Test func includesGenerationIVMoveDefinitions() {
+    #expect(PokemonMove.auraSphere.pp == 20)
+    #expect(PokemonMove.auraSphere.power == .fixed(80))
+    #expect(PokemonMove.auraSphere.hits == .one)
+    #expect(PokemonMove.auraSphere.accuracy == .alwaysHits)
+    #expect(PokemonMove.auraSphere.category == .special)
+    #expect(PokemonMove.auraSphere.parameters(in: .diamondPearl)?.power == .fixed(90))
+    #expect(PokemonMove.auraSphere.parameters(in: .xY)?.power == .fixed(80))
+
+    #expect(PokemonMove.darkVoid.accuracy == .percent(50))
+    #expect(PokemonMove.darkVoid.parameters(in: .diamondPearl)?.accuracy == .percent(80))
+    #expect(PokemonMove.darkVoid.parameters(in: .sunMoon)?.accuracy == .percent(50))
+
+    #expect(PokemonMove.doubleHit.power == .fixed(35))
+    #expect(PokemonMove.doubleHit.hits == .fixed(2))
+    #expect(PokemonMove.doubleHit.category == .physical)
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
