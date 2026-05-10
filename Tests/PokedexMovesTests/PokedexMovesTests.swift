@@ -7,7 +7,7 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 850)
+    #expect(PokemonMoveDefinitions.all.count == 919)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
@@ -16,6 +16,7 @@ import Testing
     #expect(PokemonMoveDefinitions.gen06.count == 62)
     #expect(PokemonMoveDefinitions.gen07.count == 121)
     #expect(PokemonMoveDefinitions.gen08.count == 108)
+    #expect(PokemonMoveDefinitions.gen09.count == 69)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -196,6 +197,25 @@ import Testing
     #expect(PokemonMove.takeHeart.target == .allies)
 }
 
+@Test func includesGenerationIXMoveDefinitions() {
+    #expect(PokemonMove.revivalBlessing.power == .none)
+    #expect(PokemonMove.revivalBlessing.accuracy == .notApplicable)
+    #expect(PokemonMove.revivalBlessing.target == .faintedPokemon)
+
+    #expect(PokemonMove.populationBomb.power == .fixed(20))
+    #expect(PokemonMove.populationBomb.hits == .range(1...10))
+    #expect(PokemonMove.populationBomb.accuracy == .percent(90))
+
+    #expect(PokemonMove.flowerTrick.power == .fixed(70))
+    #expect(PokemonMove.flowerTrick.accuracy == .alwaysHits)
+
+    #expect(PokemonMove.tachyonCutter.power == .fixed(50))
+    #expect(PokemonMove.tachyonCutter.hits == .fixed(2))
+    #expect(PokemonMove.tachyonCutter.accuracy == .alwaysHits)
+
+    #expect(PokemonMove.lastRespects.power == .varies)
+}
+
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {
     #expect(PokemonMove.tackle.parameters(in: .redBlue)?.power == .fixed(50))
     #expect(PokemonMove.tackle.parameters(in: .scarletViolet) == PokemonMove.tackle.parameters)
@@ -251,9 +271,10 @@ import Testing
         .userAndAllies,
         .allPokemon,
         .allies,
+        .faintedPokemon,
     ]
 
-    #expect(targets.count == 15)
+    #expect(targets.count == 16)
 }
 
 @Test func namesTackleMoveDefinition() {

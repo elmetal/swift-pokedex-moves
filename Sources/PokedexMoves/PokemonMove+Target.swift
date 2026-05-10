@@ -45,5 +45,8 @@ public extension PokemonMove {
 
         /// The user's allies.
         case allies
+
+        /// A fainted Pokemon.
+        case faintedPokemon
     }
 }

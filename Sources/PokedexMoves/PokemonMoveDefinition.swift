@@ -116,7 +116,7 @@ public struct PokemonMoveDefinition: Hashable, Sendable {
 /// A namespace for standard move definitions.
 public enum PokemonMoveDefinitions {
     /// All standard move definitions.
-    public static let all = gen01 + gen02 + gen03 + gen04 + gen05 + gen06 + gen07 + gen08
+    public static let all = gen01 + gen02 + gen03 + gen04 + gen05 + gen06 + gen07 + gen08 + gen09
 
     /// The standard move definitions introduced in Generation I.
     public static let gen01: [PokemonMoveDefinition] = [
@@ -1003,6 +1003,80 @@ public enum PokemonMoveDefinitions {
         sandsearStorm,
         lunarBlessing,
         takeHeart,
+    ]
+
+
+    /// The standard move definitions introduced in Generation IX.
+    public static let gen09: [PokemonMoveDefinition] = [
+        teraBlast,
+        silkTrap,
+        axeKick,
+        lastRespects,
+        luminaCrash,
+        orderUp,
+        jetPunch,
+        spicyExtract,
+        spinOut,
+        populationBomb,
+        iceSpinner,
+        glaiveRush,
+        revivalBlessing,
+        saltCure,
+        tripleDive,
+        mortalSpin,
+        doodle,
+        filletAway,
+        kowtowCleave,
+        flowerTrick,
+        torchSong,
+        aquaStep,
+        ragingBull,
+        makeItRain,
+        psyblade,
+        hydroSteam,
+        ruination,
+        collisionCourse,
+        electroDrift,
+        shedTail,
+        chillyReception,
+        tidyUp,
+        snowscape,
+        pounce,
+        trailblaze,
+        chillingWater,
+        hyperDrill,
+        twinBeam,
+        rageFist,
+        armorCannon,
+        bitterBlade,
+        doubleShock,
+        gigatonHammer,
+        comeuppance,
+        aquaCutter,
+        blazingTorque,
+        wickedTorque,
+        noxiousTorque,
+        combatTorque,
+        magicalTorque,
+        bloodMoon,
+        matchaGotcha,
+        syrupBomb,
+        ivyCudgel,
+        electroShot,
+        teraStarstorm,
+        fickleBeam,
+        burningBulwark,
+        thunderclap,
+        mightyCleave,
+        tachyonCutter,
+        hardPress,
+        dragonCheer,
+        alluringVoice,
+        temperFlare,
+        supercellSlam,
+        psychicNoise,
+        upperHand,
+        malignantChain,
     ]
 
     /// Returns the standard definition for the specified move.
