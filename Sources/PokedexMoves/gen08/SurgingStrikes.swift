@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as すいりゅうれんだ in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Surging Strikes"` in English and
+    /// `"すいりゅうれんだ"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"surging-strikes"`.
+    static let surgingStrikes = SurgingStrikesMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum SurgingStrikesMove {
+    static let move = PokemonMove(rawValue: "surging-strikes")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
-        pp: 10,
-        power: .perHit([20, 40, 60]),
+        type: .water,
+        pp: 5,
+        power: .fixed(25),
         hits: .fixed(3),
-        accuracy: .percent(90),
+        accuracy: .percent(100),
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Surging Strikes",
+            .japanese: "すいりゅうれんだ",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let surgingStrikes = SurgingStrikesMove.definition
 }

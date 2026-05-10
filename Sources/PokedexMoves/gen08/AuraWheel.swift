@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as オーラぐるま in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Aura Wheel"` in English and
+    /// `"オーラぐるま"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"aura-wheel"`.
+    static let auraWheel = AuraWheelMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum AuraWheelMove {
+    static let move = PokemonMove(rawValue: "aura-wheel")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .electric,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .fixed(110),
+        hits: .one,
+        accuracy: .percent(100),
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Aura Wheel",
+            .japanese: "オーラぐるま",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let auraWheel = AuraWheelMove.definition
 }

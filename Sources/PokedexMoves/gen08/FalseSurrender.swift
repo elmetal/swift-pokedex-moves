@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as どげざつき in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"False Surrender"` in English and
+    /// `"どげざつき"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"false-surrender"`.
+    static let falseSurrender = FalseSurrenderMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum FalseSurrenderMove {
+    static let move = PokemonMove(rawValue: "false-surrender")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .dark,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .fixed(80),
+        hits: .one,
+        accuracy: .alwaysHits,
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "False Surrender",
+            .japanese: "どげざつき",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let falseSurrender = FalseSurrenderMove.definition
 }

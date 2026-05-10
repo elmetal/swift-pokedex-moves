@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as らいめいげり in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Thunderous Kick"` in English and
+    /// `"らいめいげり"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"thunderous-kick"`.
+    static let thunderousKick = ThunderousKickMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum ThunderousKickMove {
+    static let move = PokemonMove(rawValue: "thunderous-kick")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .fighting,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .fixed(90),
+        hits: .one,
+        accuracy: .percent(100),
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Thunderous Kick",
+            .japanese: "らいめいげり",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let thunderousKick = ThunderousKickMove.definition
 }

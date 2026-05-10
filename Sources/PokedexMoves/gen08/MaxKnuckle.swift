@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as ダイナックル in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Max Knuckle"` in English and
+    /// `"ダイナックル"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"max-knuckle"`.
+    static let maxKnuckle = MaxKnuckleMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum MaxKnuckleMove {
+    static let move = PokemonMove(rawValue: "max-knuckle")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .fighting,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .varies,
+        hits: .one,
+        accuracy: .alwaysHits,
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Max Knuckle",
+            .japanese: "ダイナックル",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let maxKnuckle = MaxKnuckleMove.definition
 }

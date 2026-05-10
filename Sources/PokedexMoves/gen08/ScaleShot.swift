@@ -1,22 +1,22 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as スケイルショット in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Scale Shot"` in English and
+    /// `"スケイルショット"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"scale-shot"`.
+    static let scaleShot = ScaleShotMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum ScaleShotMove {
+    static let move = PokemonMove(rawValue: "scale-shot")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
-        pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
+        type: .dragon,
+        pp: 20,
+        power: .fixed(25),
+        hits: .range(2...5),
         accuracy: .percent(90),
         priority: 0,
         category: .physical,
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Scale Shot",
+            .japanese: "スケイルショット",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let scaleShot = ScaleShotMove.definition
 }

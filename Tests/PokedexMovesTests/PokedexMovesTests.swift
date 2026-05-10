@@ -7,7 +7,7 @@ import Testing
 }
 
 @Test func includesTackleMoveDefinition() {
-    #expect(PokemonMoveDefinitions.all.count == 743)
+    #expect(PokemonMoveDefinitions.all.count == 850)
     #expect(PokemonMoveDefinitions.gen01.count == 165)
     #expect(PokemonMoveDefinitions.gen02.count == 86)
     #expect(PokemonMoveDefinitions.gen03.count == 103)
@@ -15,6 +15,7 @@ import Testing
     #expect(PokemonMoveDefinitions.gen05.count == 92)
     #expect(PokemonMoveDefinitions.gen06.count == 62)
     #expect(PokemonMoveDefinitions.gen07.count == 121)
+    #expect(PokemonMoveDefinitions.gen08.count == 108)
     #expect(PokemonMoveDefinitions.gen01.first?.move == .pound)
     #expect(PokemonMoveDefinitions.tackle.move == .tackle)
     #expect(PokemonMoveDefinitions.tackle.introducedIn == .i)
@@ -176,6 +177,23 @@ import Testing
 
     #expect(PokemonMove.doubleIronBash.power == .fixed(60))
     #expect(PokemonMove.doubleIronBash.hits == .fixed(2))
+}
+
+@Test func includesGenerationVIIIMoveDefinitions() {
+    #expect(PokemonMove.maxFlare.power == .varies)
+    #expect(PokemonMove.maxFlare.accuracy == .alwaysHits)
+    #expect(PokemonMove.maxFlare.target == .target)
+
+    #expect(PokemonMove.tripleAxel.power == .perHit([20, 40, 60]))
+    #expect(PokemonMove.tripleAxel.hits == .fixed(3))
+
+    #expect(PokemonMove.surgingStrikes.power == .fixed(25))
+    #expect(PokemonMove.surgingStrikes.hits == .fixed(3))
+    #expect(PokemonMove.surgingStrikes.category == .physical)
+
+    #expect(PokemonMove.takeHeart.power == .none)
+    #expect(PokemonMove.takeHeart.accuracy == .notApplicable)
+    #expect(PokemonMove.takeHeart.target == .allies)
 }
 
 @Test func looksUpTackleParametersByVersionGroupAndGeneration() throws {

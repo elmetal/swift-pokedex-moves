@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as ダイドラグーン in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Max Wyrmwind"` in English and
+    /// `"ダイドラグーン"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"max-wyrmwind"`.
+    static let maxWyrmwind = MaxWyrmwindMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum MaxWyrmwindMove {
+    static let move = PokemonMove(rawValue: "max-wyrmwind")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .dragon,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .varies,
+        hits: .one,
+        accuracy: .alwaysHits,
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Max Wyrmwind",
+            .japanese: "ダイドラグーン",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let maxWyrmwind = MaxWyrmwindMove.definition
 }

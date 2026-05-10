@@ -1,22 +1,22 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as ポルターガイスト in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Poltergeist"` in English and
+    /// `"ポルターガイスト"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"poltergeist"`.
+    static let poltergeist = PoltergeistMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum PoltergeistMove {
+    static let move = PokemonMove(rawValue: "poltergeist")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
-        pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
+        type: .ghost,
+        pp: 5,
+        power: .fixed(110),
+        hits: .one,
         accuracy: .percent(90),
         priority: 0,
         category: .physical,
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Poltergeist",
+            .japanese: "ポルターガイスト",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let poltergeist = PoltergeistMove.definition
 }

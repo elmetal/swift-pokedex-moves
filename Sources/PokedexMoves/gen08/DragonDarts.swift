@@ -1,23 +1,23 @@
 import Foundation
 
 public extension PokemonMove {
-    /// The Pokemon move known as トリプルアクセル in Japanese.
+    /// The Pokemon move known as ドラゴンアロー in Japanese.
     ///
-    /// The localized name of this move is `"Triple Axel"` in English and
-    /// `"トリプルアクセル"` in Japanese.
+    /// The localized name of this move is `"Dragon Darts"` in English and
+    /// `"ドラゴンアロー"` in Japanese.
     ///
-    /// The move's raw value is `"triple-axel"`.
-    static let tripleAxel = TripleAxelMove.move
+    /// The move's raw value is `"dragon-darts"`.
+    static let dragonDarts = DragonDartsMove.move
 }
 
-enum TripleAxelMove {
-    static let move = PokemonMove(rawValue: "triple-axel")
+enum DragonDartsMove {
+    static let move = PokemonMove(rawValue: "dragon-darts")
     static let parameters = PokemonMove.Parameters(
-        type: .ice,
+        type: .dragon,
         pp: 10,
-        power: .perHit([20, 40, 60]),
-        hits: .fixed(3),
-        accuracy: .percent(90),
+        power: .fixed(50),
+        hits: .fixed(2),
+        accuracy: .percent(100),
         priority: 0,
         category: .physical,
         target: .target
@@ -33,12 +33,12 @@ enum TripleAxelMove {
             ),
         ],
         localizedNames: [
-            .english: "Triple Axel",
-            .japanese: "トリプルアクセル",
+            .english: "Dragon Darts",
+            .japanese: "ドラゴンアロー",
         ]
     )
 }
 
 public extension PokemonMoveDefinitions {
-    static let tripleAxel = TripleAxelMove.definition
+    static let dragonDarts = DragonDartsMove.definition
 }
