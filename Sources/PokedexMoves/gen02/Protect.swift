@@ -12,9 +12,19 @@ public extension PokemonMove {
 
 enum ProtectMove {
     static let move = PokemonMove(rawValue: "protect")
-    static let parameters = PokemonMove.Parameters(
+    static let parameters1 = PokemonMove.Parameters(
         type: .normal,
         pp: 10,
+        power: .none,
+        hits: .one,
+        accuracy: .notApplicable,
+        priority: 4,
+        category: .status,
+        target: .user
+    )
+    static let parameters2 = PokemonMove.Parameters(
+        type: .normal,
+        pp: 5,
         power: .none,
         hits: .one,
         accuracy: .notApplicable,
@@ -28,8 +38,12 @@ enum ProtectMove {
         introducedIn: .ii,
         parameterHistory: [
             .init(
-                versionGroups: Set(PokemonVersionGroup.allCases).subtracting([.redBlue, .yellow]),
-                parameters: parameters
+                versionGroups: Set(PokemonVersionGroup.allCases).subtracting([.redBlue, .yellow, .champions]),
+                parameters: parameters1
+            ),
+            .init(
+                versionGroups: [.champions],
+                parameters: parameters2
             ),
         ],
         localizedNames: [

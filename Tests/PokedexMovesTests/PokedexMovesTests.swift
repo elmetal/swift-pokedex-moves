@@ -228,6 +228,16 @@ import Testing
     #expect(PokemonVersionGroup.champions.generation == .champions)
 }
 
+@Test func includesChampionsMoveParameterChanges() throws {
+    #expect(PokemonMove.protect.parameters(in: .scarletViolet)?.pp == 10)
+    #expect(PokemonMove.protect.parameters(in: .champions)?.pp == 5)
+    #expect(PokemonMove.protect.pp == 5)
+    #expect(try PokemonMove.protect.parameters(in: .champions).pp == 5)
+
+    #expect(PokemonMove.suckerPunch.parameters(in: .champions)?.pp == 5)
+    #expect(PokemonMove.thunderclap.parameters(in: .champions)?.pp == 5)
+}
+
 @Test func reportsAmbiguousGenerationParameters() {
     #expect(PokemonMove.hypnosis.parameters(in: .diamondPearl)?.accuracy == .percent(70))
     #expect(PokemonMove.hypnosis.parameters(in: .platinum)?.accuracy == .percent(60))
